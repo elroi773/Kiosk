@@ -1,0 +1,27 @@
+@media (max-width: 768px) {
+    body {
+        background-color: lightgray;
+    }
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'GmarketSansMedium';
+    text-align: center;
+}
+
+h1{
+    margin-top: 100px;
+}
+
+button{
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(255, 249, 241);
+}
