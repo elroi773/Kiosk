@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 선택</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1 id="orderTypeTitle">주문 유형</h1>
+    
+    <form id="orderForm">
+        <label for="menu">메뉴 선택:</label>
+        <select id="menu" name="menu">
+            <option value="아메리카노">아메리카노</option>
+            <option value="카페라떼">카페라떼</option>
+            <option value="카푸치노">카푸치노</option>
+        </select>
+
+        <label for="quantity">수량:</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+        <button type="submit">주문 완료</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(window.location.search);
+            const orderType = params.get("orderType");
+            document.getElementById("orderTypeTitle").textContent = `주문 유형: ${orderType}`;
+
+            document.getElementById("orderForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                const menu = document.getElementById("menu").value;
+                const quantity = document.getElementById("quantity").value;
+                alert(`주문 완료!\\n주문 유형: ${orderType}\\n메뉴: ${menu}\\n수량: ${quantity}`);
+            });
+        });
+    </script>
+</body>
+</html>
