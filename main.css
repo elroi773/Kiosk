@@ -30,6 +30,8 @@ nav.textmenu {
     background-color: #ededff;
     gap: 10px;
     border-radius: 40px;
+    width: 730px;
+    margin: 0 auto; 
 }
 
 nav.textmenu a {
