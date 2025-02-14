@@ -7,8 +7,15 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1 id="orderTypeTitle">주문 유형</h1>
-    
+    <img src="images/background.jpg" alt="이미지" class="menu-img">    
+    <nav class="textmenu">
+        <a href="main.html">Home</a> 
+        <a href="main.html">About</a>
+        <a href="main.html">Profile</a>
+        <a href="main.html">Project</a>
+        <a href="main.html">Contact</a>
+        <span></span>
+    </nav>
     <form id="orderForm">
         <label for="menu">메뉴 선택:</label>
         <select id="menu" name="menu">
@@ -22,6 +29,23 @@
 
         <button type="submit">주문 완료</button>
     </form>
+    <div class="menu">
+        <ul>
+            <li class="1">아메리카노</li>
+            <li class="2">카페라떼</li>
+            <li class="3">바닐라라떼</li>
+            <li class="4">아포가토</li>
+            <li class="5">딸기라테</li>
+            <li class="6">젤라또</li>
+            <li class="7">바스크 치즈 케이크</li>
+            <li class="8">아이스박스</li>
+            <li class="9">스초생</li>
+            <li class="10">오마카세</li>
+        </ul>
+    </div>
+    <div class="receipt">
+        <h1 id="orderTypeTitle">주문 유형</h1>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
