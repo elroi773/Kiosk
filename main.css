@@ -11,16 +11,17 @@
     font-style: normal;
 }
 
-*{
+* {
     font-family: 'GmarketSansMedium';
     text-align: center;
     margin: 0;
 }
 
-.menu-img{
+.menu-img {
     width: 730px;
     height: 427px;
 }
+
 nav.textmenu {
     font-family: 'GmarketSansMedium';
     display: flex;
@@ -31,7 +32,7 @@ nav.textmenu {
     gap: 10px;
     border-radius: 40px;
     width: 730px;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 nav.textmenu a {
@@ -70,10 +71,18 @@ nav.textmenu span {
     display: none;
 }
 
-.menu{
-    margin-top: 40px;
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-li{
+.menu button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+li {
     list-style: none;
 }
