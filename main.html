@@ -30,36 +30,19 @@
         <button type="submit">주문 완료</button>
     </form>
     <div class="menu">
-        <ul>
-            <li class="1">아메리카노</li>
-            <li class="2">카페라떼</li>
-            <li class="3">바닐라라떼</li>
-            <li class="4">아포가토</li>
-            <li class="5">딸기라테</li>
-            <li class="6">젤라또</li>
-            <li class="7">바스크 치즈 케이크</li>
-            <li class="8">아이스박스</li>
-            <li class="9">스초생</li>
-            <li class="10">오마카세</li>
-        </ul>
+        <button onclick="addToOrder('햄버거', 5000)">햄버거 (5000원)</button>
+        <button onclick="addToOrder('콜라', 2000)">콜라 (2000원)</button>
+        <button onclick="addToOrder('감자튀김', 3000)">감자튀김 (3000원)</button>
     </div>
+    
+    <h2>주문 내역</h2>
+    <div class="order-list" id="orderList"></div>
+    <div class="total" id="totalPrice">총 가격: 0원</div>
+
     <div class="receipt">
         <h1 id="orderTypeTitle">주문 유형</h1>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const params = new URLSearchParams(window.location.search);
-            const orderType = params.get("orderType");
-            document.getElementById("orderTypeTitle").textContent = `주문 유형: ${orderType}`;
-
-            document.getElementById("orderForm").addEventListener("submit", function(event) {
-                event.preventDefault();
-                const menu = document.getElementById("menu").value;
-                const quantity = document.getElementById("quantity").value;
-                alert(`주문 완료!\\n주문 유형: ${orderType}\\n메뉴: ${menu}\\n수량: ${quantity}`);
-            });
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
