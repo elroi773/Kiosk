@@ -43,7 +43,7 @@ function renderOrder() {
         total += order.price * order.quantity;
         orderList.innerHTML += `
                     <div class="order-item">
-                        ${item} x${order.quantity} 
+                        ${item} (${order.price}원) x${order.quantity} 
                         <button onclick="updateQuantity('${item}', 1)">+</button>
                         <button onclick="updateQuantity('${item}', -1)">-</button>
                     </div>
