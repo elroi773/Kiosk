@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 선택</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <img src="images/background.jpg" alt="이미지" class="menu-img">    
+    <nav class="textmenu">
+        <a href="coffee.html">커피</a> 
+        <a href="nonecoffee.html">논커피</a>
+        <a href="dessert.html">디저트</a>
+        <span></span>
+    </nav>  
+    <div class="menu">
+        <button onclick="addToOrder('아메리카노', 5000)">아메리카노 (5000원)</button>
+        <button onclick="addToOrder('카페라떼', 2000)">카페라떼 (2000원)</button>
+        <button onclick="addToOrder('카푸치노', 3000)">카푸치노 (3000원)</button>
+        <button onclick="addToOrder('바닐라라테', 5000)">바닐라라테 (5000원)</button>
+        <button onclick="addToOrder('아포가토', 2000)">아포가토 (2000원)</button>
+        <button onclick="addToOrder('카푸치노', 3000)">카푸치노 (3000원)</button>
+        <button onclick="addToOrder('아메리카노', 5000)">아메리카노 (5000원)</button>
+        <button onclick="addToOrder('카페라떼', 2000)">카페라떼 (2000원)</button>
+        <button onclick="addToOrder('카푸치노', 3000)">카푸치노 (3000원)</button>
+    </div>
+    
+    <h2>주문 내역</h2>
+    <div class="order-list" id="orderList"></div>
+    <div class="total" id="totalPrice">총 가격: 0원</div>
+    <button><a href="pay.html">결제하기</a></button>
+
+    <div class="receipt">
+        <h1 id="orderTypeTitle">주문 유형</h1>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
