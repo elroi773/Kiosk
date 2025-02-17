@@ -51,3 +51,26 @@ function renderOrder() {
     }
     totalPrice.textContent = `총 가격: ${total}원`;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    let orderDetails = "";
+
+    for (let item of params.getAll("item")) {
+        let price = params.getAll("price")[params.getAll("item").indexOf(item)];
+        let quantity = params.getAll("quantity")[params.getAll("item").indexOf(item)];
+        orderDetails += `<p>${item} (${price}원) x ${quantity}</p>`;
+    }
+
+    document.getElementById("orderSummary").innerHTML = orderDetails;
+});
+
+function goToPayment() {
+    let queryParams = new URLSearchParams();
+    for (let item in orders) {
+        queryParams.append("item", item);
+        queryParams.append("price", orders[item].price);
+        queryParams.append("quantity", orders[item].quantity);
+    }
+    window.location.href = `pay.html?${queryParams.toString()}`;
+}
