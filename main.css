@@ -1,6 +1,6 @@
 @media (max-width: 768px) {
     body {
-        background-color: rgb(255, 249, 249);
+        background-color: #fffafa;
     }
 }
 
@@ -12,122 +12,139 @@
 }
 
 * {
-    font-family: 'GmarketSansMedium';
+    font-family: 'GmarketSansMedium', sans-serif;
     text-align: center;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* 배경 이미지 */
 .menu-img {
-    width: 730px;
-    height: 427px;
+    width: 100%;
+    max-width: 730px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* 내비게이션 메뉴 */
 nav.textmenu {
-    font-family: 'GmarketSansMedium';
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
     background-color: #ededff;
-    gap: 10px;
     border-radius: 40px;
-    width: 730px;
+    width: 90%;
+    max-width: 730px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 12px;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 nav.textmenu a {
     padding: 12px 20px;
     color: #333;
     text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    text-align: center;
-    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
 }
 
 nav.textmenu a:hover {
     color: #4c63af;
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background: rgba(76, 99, 175, 0.1);
+    transform: translateY(-3px);
 }
 
-nav.textmenu a::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 3px;
-    background-color: #4c63af;
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-nav.textmenu a:hover::before {
-    width: 100%;
-    left: 0;
-}
-
-nav.textmenu span {
-    display: none;
-}
-
+/* 메뉴 버튼 */
 .menu {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding-top: 30px;
-    padding-bottom: 30px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
+    margin: 30px auto;
+    max-width: 750px;
 }
 
 .menu button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+    padding: 12px 24px;
     font-size: 18px;
-    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
     border: none;
-    transition: background 0.3s;
+    border-radius: 8px;
+    background-color: #4c63af;
+    color: white;
+    transition: all 0.3s ease;
 }
 
-.menu button:hover{
-    background: #ddd;
+.menu button:hover {
+    background: #35478c;
+    transform: scale(1.05);
 }
 
-li {
-    list-style: none;
+/* 주문 내역 */
+.order-list {
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* 결제 버튼 */
+button a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: #4c63af;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+button a:hover {
+    background: #35478c;
+    transform: scale(1.05);
+}
+
+/* 반응형 디자인 */
 @media (max-width: 768px) {
-    .menu{
+    .menu {
         flex-direction: column;
         align-items: center;
     }
-    .textmenu{
-        display: flex;
+
+    nav.textmenu {
         flex-direction: column;
         align-items: center;
+        padding: 15px;
     }
-    .menu-img{
+
+    .menu-img {
         width: 100%;
         height: auto;
+        border-radius: 10px;
     }
-    .order-list{
+
+    .order-list {
         font-size: 16px;
-    }
-}
-
-@media (max-width: 600px) {
-    .nav {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav a {
         padding: 10px;
-        width: 100%;
-        text-align: center;
     }
 }
