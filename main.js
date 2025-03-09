@@ -1,17 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const orderType = params.get("orderType");
-    document.getElementById("orderTypeTitle").textContent = `주문 유형: ${orderType}`;
+    fetch('http://localhost:3000/menu') // 서버에서 메뉴 데이터 가져오기
+        .then(response => response.json())
+        .then(data => {
+            let menuContainer = document.querySelector('.menu');
+            menuContainer.innerHTML = ''; // 기존 메뉴 초기화
 
-    document.getElementById("orderForm").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const menu = document.getElementById("menu").value;
-        const quantity = document.getElementById("quantity").value;
-        alert(`주문 완료!\\n주문 유형: ${orderType}\\n메뉴: ${menu}\\n수량: ${quantity}`);
-    });
+            data.forEach(item => {
+                let button = document.createElement('button');
+                button.textContent = `${item.name} (${item.price}원)`;
+                button.onclick = () => addToOrder(item.name, item.price);
+                menuContainer.appendChild(button);
+            });
+
+            // 주문 내역이 있으면 불러오기
+            loadOrders();
+        })
+        .catch(error => console.error("메뉴 데이터를 불러오는 중 오류 발생:", error));
 });
 
 let orders = {};
+
+// ✅ 주문 내역을 localStorage에 저장
+function saveOrders() {
+    localStorage.setItem("orders", JSON.stringify(orders));
+}
+
+// ✅ localStorage에서 주문 내역 불러오기
+function loadOrders() {
+    let storedOrders = localStorage.getItem("orders");
+    if (storedOrders) {
+        orders = JSON.parse(storedOrders);
+        renderOrder();
+    }
+}
 
 function addToOrder(item, price) {
     if (orders[item]) {
@@ -19,6 +40,7 @@ function addToOrder(item, price) {
     } else {
         orders[item] = { price: price, quantity: 1 };
     }
+    saveOrders(); // 주문 내역 저장
     renderOrder();
 }
 
@@ -28,6 +50,7 @@ function updateQuantity(item, delta) {
         if (orders[item].quantity <= 0) {
             delete orders[item];
         }
+        saveOrders(); // 변경된 주문 내역 저장
         renderOrder();
     }
 }
@@ -42,24 +65,26 @@ function renderOrder() {
         let order = orders[item];
         total += order.price * order.quantity;
         orderList.innerHTML += `
-                    <div class="order-item">
-                        ${item} (${order.price}원) x${order.quantity} 
-                        <button onclick="updateQuantity('${item}', 1)">+</button>
-                        <button onclick="updateQuantity('${item}', -1)">-</button>
-                    </div>
-                `;
+            <div class="order-item">
+                ${item} (${order.price}원) x${order.quantity} 
+                <button onclick="updateQuantity('${item}', 1)">+</button>
+                <button onclick="updateQuantity('${item}', -1)">-</button>
+            </div>
+        `;
     }
     totalPrice.textContent = `총 가격: ${total}원`;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
     let orderDetails = "";
+    let storedOrders = localStorage.getItem("orders");
 
-    for (let item of params.getAll("item")) {
-        let price = params.getAll("price")[params.getAll("item").indexOf(item)];
-        let quantity = params.getAll("quantity")[params.getAll("item").indexOf(item)];
-        orderDetails += `<p>${item} (${price}원) x ${quantity}</p>`;
+    if (storedOrders) {
+        let orders = JSON.parse(storedOrders);
+        for (let item in orders) {
+            let order = orders[item];
+            orderDetails += `<p>${item} (${order.price}원) x ${order.quantity}</p>`;
+        }
     }
 
     document.getElementById("orderSummary").innerHTML = orderDetails;
